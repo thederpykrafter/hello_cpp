@@ -1,5 +1,6 @@
 # use @<command> to supress make echoing command
 CC = g++
+LANG = cpp
 CFLAGS = -g
 OUT_FILE = Hello
 TERM_WIDTH = $$(tput cols)
@@ -10,9 +11,9 @@ all: build install
 
 test: build run
 
-build: src/main.cpp
+build: src/main.$(LANG)
 	@if [ ! -d bin ]; then mkdir bin; fi
-	@$(CC) $(CFLAGS) -o bin/$(OUT_FILE) src/main.cpp
+	@$(CC) $(CFLAGS) -o bin/$(OUT_FILE) src/main.$(LANG)
 	@echo -e "\x1b[92mCompiled\x1b[m bin/$(OUT_FILE)"
 
 install: bin/$(OUT_FILE)
