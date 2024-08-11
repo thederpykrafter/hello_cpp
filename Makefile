@@ -2,7 +2,9 @@
 CC = g++
 LANG = cpp
 CFLAGS = -g
+
 OUT_FILE = Hello
+
 TERM_WIDTH = $$(tput cols)
 
 default: all
@@ -13,7 +15,7 @@ test: build run
 
 build: src/main.$(LANG)
 	@if [ ! -d bin ]; then mkdir bin; fi
-	@$(CC) $(CFLAGS) -o bin/$(OUT_FILE) src/main.$(LANG)
+	@$(CC) $(CFLAGS) src/main.$(LANG) -o bin/$(OUT_FILE)
 	@echo -e "\x1b[92mCompiled\x1b[m bin/$(OUT_FILE)"
 
 install: bin/$(OUT_FILE)
